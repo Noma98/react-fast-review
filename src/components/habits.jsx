@@ -5,6 +5,7 @@ import HabitAddForm from './habitAddForm';
 class Habits extends Component {
 
     render() {
+        console.log("habits");
         return (
             <>
                 <HabitAddForm onAdd={this.props.handleAdd} />
@@ -19,7 +20,7 @@ class Habits extends Component {
                         />
                     })}
                 </ul>
-                <button>Reset All</button>
+                <button onClick={this.props.onReset}>Reset All</button>
             </>
         );
     }
