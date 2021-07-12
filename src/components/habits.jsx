@@ -2,11 +2,10 @@ import React from 'react';
 import Habit from './habit';
 import HabitAddForm from './habitAddForm';
 
-const Habits = ({ habits, handleAdd, onIncrement, onReset, onDecrement, onDelete }) => {
-    console.log("habits");
+const Habits = ({ habits, onAdd, onIncrement, onReset, onDecrement, onDelete }) => {
     return (
         <>
-            <HabitAddForm onAdd={handleAdd} />
+            <HabitAddForm onAdd={onAdd} />
             <ul>
                 {habits.map(habit => {
                     return <Habit
