@@ -1,4 +1,5 @@
 import React, { memo } from 'react';
+import styles from './habit.module.css';
 
 const Habit = memo(({ habit, onIncrement, onDecrement, onDelete }) => {
     const { name, count } = habit;
@@ -16,7 +17,7 @@ const Habit = memo(({ habit, onIncrement, onDecrement, onDelete }) => {
         <li>
             <span className="habit-name">{name}</span>
             <span className="habit-count">{count}</span>
-            <button onClick={handleIncrement}>
+            <button className={styles.btn} onClick={handleIncrement}>
                 <i className="fas fa-plus-square"></i>
             </button>
             <button onClick={handleDecrement}>

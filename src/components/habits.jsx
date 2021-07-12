@@ -1,10 +1,11 @@
 import React from 'react';
 import Habit from './habit';
 import HabitAddForm from './habitAddForm';
+import styles from './habits.module.css';
 
 const Habits = ({ habits, onAdd, onIncrement, onReset, onDecrement, onDelete }) => {
     return (
-        <>
+        <div className={styles.habits}>
             <HabitAddForm onAdd={onAdd} />
             <ul>
                 {habits.map(habit => {
@@ -17,8 +18,8 @@ const Habits = ({ habits, onAdd, onIncrement, onReset, onDecrement, onDelete }) 
                     />
                 })}
             </ul>
-            <button onClick={onReset}>Reset All</button>
-        </>
+            <button className={styles.btn} onClick={onReset}>Reset All</button>
+        </div>
     );
 };
 
