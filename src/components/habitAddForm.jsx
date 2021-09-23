@@ -1,5 +1,6 @@
 import React, { memo, useRef } from 'react';
 import { connect } from 'react-redux';
+import { onAdd } from '../_actions';
 
 const HabitAddForm = memo(({ onAdd }) => {
     const formRef = useRef();
@@ -18,13 +19,6 @@ const HabitAddForm = memo(({ onAdd }) => {
         </form>
     );
 });
-const mapDispatchToProps = (dispatch) => {
-    return {
-        onAdd: (name) => {
-            dispatch({ type: 'CREATE', payload: { name } });
-        }
-    }
-}
-export default connect(null, mapDispatchToProps)(HabitAddForm);
+export default connect(null, { onAdd })(HabitAddForm);
 
 

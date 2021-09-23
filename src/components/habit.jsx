@@ -1,7 +1,7 @@
 import React, { memo } from 'react';
 import styles from './habit.module.css';
 import { connect } from 'react-redux';
-
+import { onIncrement, onDecrement, onDelete } from '../_actions';
 const Habit = memo(({ habit, onIncrement, onDecrement, onDelete }) => {
     const { name, count } = habit;
     const handleIncrement = () => {
@@ -30,17 +30,4 @@ const Habit = memo(({ habit, onIncrement, onDecrement, onDelete }) => {
     );
 });
 
-const mapDispatchToProps = (dispatch) => {
-    return {
-        onIncrement: (habit) => {
-            dispatch({ type: 'INCREMENT', payload: { habit } })
-        },
-        onDecrement: (habit) => {
-            dispatch({ type: 'DECREMENT', payload: { habit } })
-        },
-        onDelete: (habit) => {
-            dispatch({ type: 'DELETE', payload: { habit } })
-        },
-    }
-}
-export default connect(null, mapDispatchToProps)(Habit);
+export default connect(null, { onIncrement, onDecrement, onDelete })(Habit);

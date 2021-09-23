@@ -3,6 +3,7 @@ import Habit from './habit';
 import HabitAddForm from './habitAddForm';
 import styles from './habits.module.css';
 import { connect } from 'react-redux';
+import { onReset } from '../_actions';
 
 const Habits = ({ habits, onReset }) => {
     return (
@@ -23,11 +24,5 @@ const Habits = ({ habits, onReset }) => {
 const mapStateToProps = (state) => {
     return { habits: state.habits }
 }
-const mapDispatchToProps = (dispatch) => {
-    return {
-        onReset: () => {
-            dispatch({ type: 'RESET' })
-        }
-    }
-}
-export default connect(mapStateToProps, mapDispatchToProps)(Habits);
+
+export default connect(mapStateToProps, { onReset })(Habits);
