@@ -1,5 +1,6 @@
 
 import React, { memo } from 'react';
+import { connect } from 'react-redux';
 
 const Navbar = memo(({ totalCount }) => {
     return (
@@ -10,5 +11,8 @@ const Navbar = memo(({ totalCount }) => {
         </header>
     );
 });
+const mapStateToProps = (state) => {
+    return { totalCount: state.habits.filter(item => item.count !== 0).length };
+}
 
-export default Navbar;
+export default connect(mapStateToProps)(Navbar);

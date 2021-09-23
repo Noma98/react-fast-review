@@ -2,19 +2,17 @@ import React from 'react';
 import Habit from './habit';
 import HabitAddForm from './habitAddForm';
 import styles from './habits.module.css';
+import { connect } from 'react-redux';
 
-const Habits = ({ habits, onAdd, onIncrement, onReset, onDecrement, onDelete }) => {
+const Habits = ({ habits, onReset }) => {
     return (
         <div className={styles.habits}>
-            <HabitAddForm onAdd={onAdd} />
+            <HabitAddForm />
             <ul>
                 {habits.map(habit => {
                     return <Habit
                         key={habit.id}
                         habit={habit}
-                        onIncrement={onIncrement}
-                        onDecrement={onDecrement}
-                        onDelete={onDelete}
                     />
                 })}
             </ul>
@@ -22,5 +20,14 @@ const Habits = ({ habits, onAdd, onIncrement, onReset, onDecrement, onDelete }) 
         </div>
     );
 };
-
-export default Habits;
+const mapStateToProps = (state) => {
+    return { habits: state.habits }
+}
+const mapDispatchToProps = (dispatch) => {
+    return {
+        onReset: () => {
+            dispatch({ type: 'RESET' })
+        }
+    }
+}
+export default connect(mapStateToProps, mapDispatchToProps)(Habits);

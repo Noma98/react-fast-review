@@ -1,4 +1,5 @@
 import React, { memo, useRef } from 'react';
+import { connect } from 'react-redux';
 
 const HabitAddForm = memo(({ onAdd }) => {
     const formRef = useRef();
@@ -7,7 +8,6 @@ const HabitAddForm = memo(({ onAdd }) => {
         e.preventDefault();
         const name = inputRef.current.value;
         name && onAdd(name);
-        //inputRef.current.value = "";
         formRef.current.reset();
     };
 
@@ -18,6 +18,13 @@ const HabitAddForm = memo(({ onAdd }) => {
         </form>
     );
 });
-export default HabitAddForm;
+const mapDispatchToProps = (dispatch) => {
+    return {
+        onAdd: (name) => {
+            dispatch({ type: 'CREATE', payload: { name } });
+        }
+    }
+}
+export default connect(null, mapDispatchToProps)(HabitAddForm);
 
 
